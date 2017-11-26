@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llCountryRow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/margin_padding_5dp">
+
+    <ImageView
+        android:id="@+id/imvCountryIcon"
+        android:layout_width="@dimen/country_img_wh"
+        android:layout_height="@dimen/country_img_wh"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/margin_padding_5dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/txtCountryName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:padding="@dimen/margin_padding_5dp"
+        android:text="@string/app_name"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/txt_14sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/margin_padding_5dp"
+        android:src="@drawable/ic_navigate_next_black_24dp" />
+</LinearLayout>
