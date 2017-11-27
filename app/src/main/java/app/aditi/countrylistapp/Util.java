@@ -4,18 +4,20 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.PictureDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.annotation.Nullable;
+import android.net.Uri;
 import android.widget.ImageView;
 
+import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-import com.larvalabs.svgandroid.SVG;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.model.StreamEncoder;
+import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.caverock.androidsvg.SVG;
+
+import java.io.InputStream;
 
 /**
  * Created by Aditi on 25-11-2017.
@@ -65,24 +67,26 @@ public class Util {
     }
 
 
-    public static void loadImage(Context context, ImageView imgView, String url, int defaultResource) {
+    public static void loadImage(Context context, ImageView imgView, String url) {
         if (url != null && !url.isEmpty()) {
             try {
-                RequestBuilder<SVG> requestBuilder = Glide.with(context)
+                GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(context)
+                        .using(Glide.buildStreamModelLoader(Uri.class, context), InputStream.class)
+                        .from(Uri.class)
                         .as(SVG.class)
-                        .load(url)
-                        .listener(new RequestListener<SVG>() {
-                            @Override
-                            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<SVG> target, boolean isFirstResource) {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean onResourceReady(SVG resource, Object model, Target<SVG> target, DataSource dataSource, boolean isFirstResource) {
-                                return false;
-                            }
-                        });
-                requestBuilder.into(imgView);
+                        .transcode(new SvgDrawableTranscoder(), PictureDrawable.class)
+                        .sourceEncoder(new StreamEncoder())
+                        .cacheDecoder(new FileToStreamDecoder<SVG>(new SvgDecoder()))
+                        .decoder(new SvgDecoder())
+                        .placeholder(R.mipmap.ic_launcher)
+                        .error(R.mipmap.ic_launcher)
+                        .animate(android.R.anim.fade_in)
+                        .listener(new SvgSoftwareLayerSetter<Uri>());
+                Uri uri = Uri.parse(url);
+                requestBuilder
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .load(uri)
+                        .into(imgView);
             } catch (Exception e) {
                 e.printStackTrace();
             }

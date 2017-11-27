@@ -13,11 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CountryRowAdapter extends RecyclerView.Adapter<CountryRowAdapter.ViewHolder> {
-
     private List<CountryData> countryDataList;
-
     private Context context;
-    private LayoutInflater layoutInflater;
 
     public CountryRowAdapter(Context context, ArrayList<CountryData> countryDataList) {
         this.context = context;
@@ -32,7 +29,7 @@ public class CountryRowAdapter extends RecyclerView.Adapter<CountryRowAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         CountryData data = countryDataList.get(position);
-        Util.loadImage(context, holder.imvCountryIcon, data.getFlag(), R.mipmap.ic_launcher);
+        Util.loadImage(context, holder.imvCountryIcon, data.getFlag());
         holder.txtCountryName.setText(data.getName());
     }
 
