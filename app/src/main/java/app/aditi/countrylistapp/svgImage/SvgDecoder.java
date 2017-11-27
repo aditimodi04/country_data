@@ -1,4 +1,4 @@
-package app.aditi.countrylistapp;
+package app.aditi.countrylistapp.svgImage;
 
 
 import com.bumptech.glide.load.ResourceDecoder;

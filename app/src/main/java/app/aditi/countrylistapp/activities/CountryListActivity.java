@@ -1,4 +1,4 @@
-package app.aditi.countrylistapp;
+package app.aditi.countrylistapp.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Observable;
 import java.util.Observer;
+
+import app.aditi.countrylistapp.R;
+import app.aditi.countrylistapp.utils.Util;
+import app.aditi.countrylistapp.adapter.CountryRowAdapter;
+import app.aditi.countrylistapp.dao.CountryData;
+import app.aditi.countrylistapp.models.CountryModel;
 
 public class CountryListActivity extends Activity implements Observer {
 

@@ -1,4 +1,4 @@
-package app.aditi.countrylistapp;
+package app.aditi.countrylistapp.svgImage;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.PictureDrawable;

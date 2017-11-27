@@ -1,4 +1,4 @@
-package app.aditi.countrylistapp;
+package app.aditi.countrylistapp.utils;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -18,6 +18,11 @@ import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
 import com.caverock.androidsvg.SVG;
 
 import java.io.InputStream;
+
+import app.aditi.countrylistapp.R;
+import app.aditi.countrylistapp.svgImage.SvgDecoder;
+import app.aditi.countrylistapp.svgImage.SvgDrawableTranscoder;
+import app.aditi.countrylistapp.svgImage.SvgSoftwareLayerSetter;
 
 /**
  * Created by Aditi on 25-11-2017.

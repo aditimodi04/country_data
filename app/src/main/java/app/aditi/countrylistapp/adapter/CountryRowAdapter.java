@@ -1,4 +1,4 @@
-package app.aditi.countrylistapp;
+package app.aditi.countrylistapp.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import app.aditi.countrylistapp.dao.CountryData;
+import app.aditi.countrylistapp.R;
+import app.aditi.countrylistapp.utils.Util;
 
 public class CountryRowAdapter extends RecyclerView.Adapter<CountryRowAdapter.ViewHolder> {
     private List<CountryData> countryDataList;

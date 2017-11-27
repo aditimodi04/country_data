@@ -1,4 +1,4 @@
-package app.aditi.countrylistapp;
+package app.aditi.countrylistapp.models;
 
 import android.content.Context;
 import android.util.Log;
@@ -6,6 +6,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import app.aditi.countrylistapp.R;
+import app.aditi.countrylistapp.apiCall.ApiClient;
+import app.aditi.countrylistapp.apiCall.ApiInterface;
+import app.aditi.countrylistapp.dao.CountryData;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

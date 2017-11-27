@@ -1,7 +1,8 @@
-package app.aditi.countrylistapp;
+package app.aditi.countrylistapp.apiCall;
 
 import java.util.ArrayList;
 
+import app.aditi.countrylistapp.dao.CountryData;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
