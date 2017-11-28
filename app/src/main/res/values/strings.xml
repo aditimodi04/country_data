@@ -3,4 +3,16 @@
     <string name="InternetNotAvailable">Check Internet connection</string>
     <string name="somethingWentWrong">Something Went Wrong. Please try again later</string>
     <string name="noCountryDataFound">No Country Data found</string>
+    <string name="country_list">Country List</string>
+    <string name="country_details">Country Details</string>
+    <string name="country_name">Country Name</string>
+    <string name="capital">Capital :</string>
+    <string name="region">Region :</string>
+    <string name="sub_region">Sub Region :</string>
+    <string name="population">Population :</string>
+    <string name="area">Area :</string>
+    <string name="timezone">TimeZone :</string>
+    <string name="boarders">Boarders :</string>
+    <string name="currencies">Currencies :</string>
+    <string name="language">Language :</string>
 </resources>

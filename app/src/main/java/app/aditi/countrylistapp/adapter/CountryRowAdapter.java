@@ -35,6 +35,8 @@ public class CountryRowAdapter extends RecyclerView.Adapter<CountryRowAdapter.Vi
         CountryData data = countryDataList.get(position);
         Util.loadImage(context, holder.imvCountryIcon, data.getFlag());
         holder.txtCountryName.setText(data.getName());
+        holder.txtCountryName.setTag(data);
+        holder.txtCountryName.setOnClickListener(((View.OnClickListener) context));
     }
 
     @Override

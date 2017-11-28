@@ -1,6 +1,7 @@
 package app.aditi.countrylistapp.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
@@ -20,7 +21,7 @@ import app.aditi.countrylistapp.adapter.CountryRowAdapter;
 import app.aditi.countrylistapp.dao.CountryData;
 import app.aditi.countrylistapp.models.CountryModel;
 
-public class CountryListActivity extends Activity implements Observer {
+public class CountryListActivity extends Activity implements Observer,View.OnClickListener {
 
     private SwipeRefreshLayout svRefreshCountries;
     private RecyclerView rvCountries;
@@ -68,6 +69,27 @@ public class CountryListActivity extends Activity implements Observer {
         } else {
             txtEmptyView.setText(((String) result));
             txtEmptyView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        int vId=view.getId();
+        try{
+            switch (vId){
+                case R.id.txtCountryName:
+                    CountryData countryData = (CountryData) view.getTag();
+                    if (countryData != null) {
+                        Intent intent=new Intent(CountryListActivity.this,CountryDetailsActivity.class);
+                        intent.putExtra(CountryData.COUNTRY_DATA, countryData);
+                        startActivity(intent);
+                    }
+                    break;
+                    default:
+                        break;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

@@ -1,23 +1,338 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imvCountryFlag"
+    <RelativeLayout
+        android:id="@+id/rlTitle"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="fitXY"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
 
-    <TextView
-        android:id="@+id/txtCountryName"
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="@dimen/dimen_30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/margin_padding_5dp"
+            android:src="@mipmap/ic_back" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/margin_padding_10dp"
+            android:text="@string/country_details"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/txt_20sp" />
+
+    </RelativeLayout>
+
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:gravity="center"
-        android:text="Country Name"
-        android:textSize="@dimen/txt_20sp"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/rlTitle">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imvCountryFlag"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_200dp"
+                android:background="@color/transparent"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/margin_padding_5dp"
+                android:scaleType="fitXY"
+
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/txtCountryName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:paddingBottom="@dimen/margin_padding_5dp"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:text="@string/country_name"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/txt_20sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/imvCountryFlag" />
+
+            <LinearLayout
+                android:id="@+id/llCapital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/txtCountryName">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/capital"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+
+                <TextView
+                    android:id="@+id/txtCapital"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Capital Name"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/txt_14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRegion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llCapital">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/region"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+
+                <TextView
+                    android:id="@+id/txtRegion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Region"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/txt_14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSubRegion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llRegion">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/sub_region"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+
+                <TextView
+                    android:id="@+id/txtSubRegion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Sub Region"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/txt_14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPopulation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llSubRegion">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/population"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+                <TextView
+                    android:id="@+id/txtPopulation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Population"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/txt_14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llPopulation">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/area"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+
+                <TextView
+                    android:id="@+id/txtArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Area"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/txt_14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llArea">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/timezone"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+
+                <LinearLayout
+                    android:id="@+id/llTimeZones"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBoard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llTime">
+
+                <TextView
+                    android:id="@+id/txtBoarder"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/boarders"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+                <LinearLayout
+                    android:id="@+id/llBoarders"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCurrency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llBoard">
+
+                <TextView
+                    android:id="@+id/txtCurrencies"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/currencies"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+                <LinearLayout
+                    android:id="@+id/llCurrencies"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llLang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/margin_padding_5dp"
+                android:paddingStart="@dimen/margin_padding_5dp"
+                android:paddingTop="@dimen/margin_padding_5dp"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@+id/llCurrency">
+
+                <TextView
+                    android:id="@+id/txtLanguage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="@string/language"
+                    android:textColor="@color/light_black"
+                    android:textSize="@dimen/txt_12sp" />
+
+                <LinearLayout
+                    android:id="@+id/llLanguages"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
