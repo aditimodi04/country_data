@@ -21,7 +21,7 @@ import app.aditi.countrylistapp.adapter.CountryRowAdapter;
 import app.aditi.countrylistapp.dao.CountryData;
 import app.aditi.countrylistapp.models.CountryModel;
 
-public class CountryListActivity extends Activity implements Observer,View.OnClickListener {
+public class CountryListActivity extends Activity implements Observer, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout svRefreshCountries;
     private RecyclerView rvCountries;
@@ -51,6 +51,9 @@ public class CountryListActivity extends Activity implements Observer,View.OnCli
             txtEmptyView.setText(getResources().getString(R.string.InternetNotAvailable));
             txtEmptyView.setVisibility(View.VISIBLE);
         }
+        svRefreshCountries.setOnRefreshListener(this);
+        svRefreshCountries.setColorSchemeResources(R.color.colorPrimary, R.color.colorAccent, R.color.colorPrimary, R.color.colorAccent);
+
     }
 
     @Override
@@ -70,26 +73,46 @@ public class CountryListActivity extends Activity implements Observer,View.OnCli
             txtEmptyView.setText(((String) result));
             txtEmptyView.setVisibility(View.VISIBLE);
         }
+        if (svRefreshCountries.isRefreshing()) {
+            svRefreshCountries.setRefreshing(false);
+        }
+
     }
 
     @Override
     public void onClick(View view) {
-        int vId=view.getId();
-        try{
-            switch (vId){
+        int vId = view.getId();
+        try {
+            switch (vId) {
                 case R.id.txtCountryName:
                     CountryData countryData = (CountryData) view.getTag();
                     if (countryData != null) {
-                        Intent intent=new Intent(CountryListActivity.this,CountryDetailsActivity.class);
+                        Intent intent = new Intent(CountryListActivity.this, CountryDetailsActivity.class);
                         intent.putExtra(CountryData.COUNTRY_DATA, countryData);
                         startActivity(intent);
                     }
                     break;
-                    default:
-                        break;
+                default:
+                    break;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onRefresh() {
+        if (Util.isDeviceOnline(this)) {
+            txtEmptyView.setVisibility(View.GONE);
+            countryModel.getAllCountryList(this);
+        } else {
+            countryData.clear();
+            countryRowAdapter.notifyDataSetChanged();
+            txtEmptyView.setText(getResources().getString(R.string.InternetNotAvailable));
+            txtEmptyView.setVisibility(View.VISIBLE);
+            if (svRefreshCountries.isRefreshing()) {
+                svRefreshCountries.setRefreshing(false);
+            }
         }
     }
 }

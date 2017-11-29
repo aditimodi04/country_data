@@ -32,6 +32,15 @@ public class CountryDetailsActivity extends Activity implements View.OnClickList
     private LinearLayout llLanguages;
     private LinearLayout llTimeZones;
     private ImageView imgBack;
+    private LinearLayout llCapital;
+    private LinearLayout llRegion;
+    private LinearLayout llSubRegion;
+    private LinearLayout llPopulation;
+    private LinearLayout llArea;
+    private LinearLayout llTime;
+    private LinearLayout llBoard;
+    private LinearLayout llCurrency;
+    private LinearLayout llLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +52,7 @@ public class CountryDetailsActivity extends Activity implements View.OnClickList
         }
         init();
         setUpUI();
-        setLlBoarders();
-        setLlCurrencies();
-        setLlLanguages();
-        setLlTimeZones();
+
     }
 
 
@@ -63,17 +69,87 @@ public class CountryDetailsActivity extends Activity implements View.OnClickList
         llCurrencies = findViewById(R.id.llCurrencies);
         llLanguages = findViewById(R.id.llLanguages);
         llTimeZones = findViewById(R.id.llTimeZones);
+
+        llCapital = findViewById(R.id.llCapital);
+        llRegion = findViewById(R.id.llRegion);
+        llSubRegion = findViewById(R.id.llSubRegion);
+        llPopulation = findViewById(R.id.llPopulation);
+        llArea = findViewById(R.id.llArea);
+        llTime = findViewById(R.id.llTime);
+        llBoard = findViewById(R.id.llBoard);
+        llCurrency = findViewById(R.id.llCurrency);
+        llLang = findViewById(R.id.llLang);
+
+
         imgBack.setOnClickListener(this);
     }
 
     private void setUpUI() {
         Util.loadImage(CountryDetailsActivity.this, imvCountryFlag, countryData.getFlag());
         txtCountryName.setText(countryData.getName());
-        txtCapital.setText(countryData.getCapital());
-        txtRegion.setText(countryData.getRegion());
-        txtSubRegion.setText(countryData.getSubregion());
-        txtPopulation.setText(countryData.getPopulation() + "");
-        txtArea.setText(countryData.getArea() + "");
+
+        if (!TextUtils.isEmpty(countryData.getCapital())) {
+            llCapital.setVisibility(View.VISIBLE);
+            txtCapital.setText(countryData.getCapital());
+        } else {
+            llCapital.setVisibility(View.GONE);
+        }
+
+        if (!TextUtils.isEmpty(countryData.getRegion())) {
+            llRegion.setVisibility(View.VISIBLE);
+            txtRegion.setText(countryData.getRegion());
+        } else {
+            llRegion.setVisibility(View.GONE);
+        }
+
+        if (!TextUtils.isEmpty(countryData.getSubregion())) {
+            llSubRegion.setVisibility(View.VISIBLE);
+            txtSubRegion.setText(countryData.getSubregion());
+        } else {
+            llSubRegion.setVisibility(View.GONE);
+        }
+
+        if (countryData.getPopulation()!=null&&countryData.getPopulation() > 0) {
+            llPopulation.setVisibility(View.VISIBLE);
+            txtPopulation.setText(countryData.getPopulation() + "");
+        } else {
+            llPopulation.setVisibility(View.GONE);
+        }
+
+        if (countryData.getArea() != null && countryData.getArea() > 0) {
+            llArea.setVisibility(View.VISIBLE);
+            txtArea.setText(countryData.getArea() + "");
+        } else {
+            llArea.setVisibility(View.GONE);
+        }
+
+        if (countryData.getBorders() != null && countryData.getBorders().length > 0) {
+            llBoard.setVisibility(View.VISIBLE);
+            setLlBoarders();
+        } else {
+            llBoard.setVisibility(View.GONE);
+        }
+
+        if (!countryData.getCurrencies().isEmpty()) {
+            llCurrency.setVisibility(View.VISIBLE);
+            setLlCurrencies();
+        } else {
+            llCurrency.setVisibility(View.GONE);
+        }
+
+        if (!countryData.getLanguages().isEmpty()) {
+            llLang.setVisibility(View.VISIBLE);
+            setLlLanguages();
+        } else {
+            llLang.setVisibility(View.VISIBLE);
+        }
+
+        if (!countryData.getLanguages().isEmpty()) {
+            llTime.setVisibility(View.VISIBLE);
+            setLlTimeZones();
+        } else {
+            llTime.setVisibility(View.GONE);
+        }
     }
 
     private void setLlBoarders() {
@@ -131,7 +207,6 @@ public class CountryDetailsActivity extends Activity implements View.OnClickList
                 default:
                     break;
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
