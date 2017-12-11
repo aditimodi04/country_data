@@ -41,20 +41,22 @@
         app:layout_constraintTop_toBottomOf="@+id/rlTitle">
 
         <android.support.constraint.ConstraintLayout
+            android:id="@+id/clCountryDetail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imvCountryFlag"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="@dimen/dimen_200dp"
-                android:background="@color/transparent"
+                android:adjustViewBounds="true"
                 android:contentDescription="@string/app_name"
-                android:padding="@dimen/margin_padding_5dp"
-                android:scaleType="fitXY"
-
-                android:src="@mipmap/ic_launcher" />
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_launcher"
+                app:layout_constraintLeft_toLeftOf="@+id/clCountryDetail"
+                app:layout_constraintRight_toRightOf="@+id/clCountryDetail"
+                app:layout_constraintTop_toTopOf="@+id/clCountryDetail" />
 
             <TextView
                 android:id="@+id/txtCountryName"

@@ -85,7 +85,7 @@ public class CountryDetailsActivity extends Activity implements View.OnClickList
     }
 
     private void setUpUI() {
-        Util.loadImage(CountryDetailsActivity.this, imvCountryFlag, countryData.getFlag());
+        Util.loadImage(CountryDetailsActivity.this, imvCountryFlag, countryData.getFlag(), getResources().getDimensionPixelOffset(R.dimen.dimen_200dp));
         txtCountryName.setText(countryData.getName());
 
         if (!TextUtils.isEmpty(countryData.getCapital())) {
@@ -109,7 +109,7 @@ public class CountryDetailsActivity extends Activity implements View.OnClickList
             llSubRegion.setVisibility(View.GONE);
         }
 
-        if (countryData.getPopulation()!=null&&countryData.getPopulation() > 0) {
+        if (countryData.getPopulation() != null && countryData.getPopulation() > 0) {
             llPopulation.setVisibility(View.VISIBLE);
             txtPopulation.setText(countryData.getPopulation() + "");
         } else {

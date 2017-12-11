@@ -1,5 +1,6 @@
 package app.aditi.countrylistapp.utils;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.graphics.drawable.PictureDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.util.DisplayMetrics;
 import android.widget.ImageView;
 
 import com.bumptech.glide.GenericRequestBuilder;
@@ -71,8 +73,13 @@ public class Util {
         return isDeviceOnLine;
     }
 
+    public static int getDeviceWidth(Context context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
+    }
 
-    public static void loadImage(Context context, ImageView imgView, String url) {
+    public static void loadImage(Context context, ImageView imgView, String url, int height) {
         if (url != null && !url.isEmpty()) {
             try {
                 GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(context)
@@ -87,6 +94,9 @@ public class Util {
                         .error(R.mipmap.ic_launcher)
                         .animate(android.R.anim.fade_in)
                         .listener(new SvgSoftwareLayerSetter<Uri>());
+               /* if (height > 0) {
+                    requestBuilder.override(getDeviceWidth(context), Target.SIZE_ORIGINAL);
+                }*/
                 Uri uri = Uri.parse(url);
                 requestBuilder
                         .diskCacheStrategy(DiskCacheStrategy.NONE)

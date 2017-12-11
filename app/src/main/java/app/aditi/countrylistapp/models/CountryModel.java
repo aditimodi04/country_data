@@ -25,7 +25,7 @@ public class CountryModel extends Observable {
 
     public void getAllCountryList(final Context context) {
         try {
-            ApiInterface apiCall = ApiClient.getClient(COUNTRY_URL).create(ApiInterface.class);
+            ApiInterface apiCall = ApiClient.getClient(context,COUNTRY_URL).create(ApiInterface.class);
             Call<ArrayList<CountryData>> countryCall = apiCall.countryList();
             countryCall.enqueue(new Callback<ArrayList<CountryData>>() {
                 @Override

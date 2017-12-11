@@ -16,10 +16,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 import app.aditi.countrylistapp.R;
-import app.aditi.countrylistapp.utils.Util;
 import app.aditi.countrylistapp.adapter.CountryRowAdapter;
 import app.aditi.countrylistapp.dao.CountryData;
 import app.aditi.countrylistapp.models.CountryModel;
+import app.aditi.countrylistapp.utils.Util;
 
 public class CountryListActivity extends Activity implements Observer, View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {
 
@@ -44,13 +44,8 @@ public class CountryListActivity extends Activity implements Observer, View.OnCl
         rvCountries.setAdapter(countryRowAdapter);
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rvCountries.addItemDecoration(itemDecoration);
-        if (Util.isDeviceOnline(this)) {
-            Util.showProDialog(this);
-            countryModel.getAllCountryList(this);
-        } else {
-            txtEmptyView.setText(getResources().getString(R.string.InternetNotAvailable));
-            txtEmptyView.setVisibility(View.VISIBLE);
-        }
+        Util.showProDialog(this);
+        countryModel.getAllCountryList(this);
         svRefreshCountries.setOnRefreshListener(this);
         svRefreshCountries.setColorSchemeResources(R.color.colorPrimary, R.color.colorAccent, R.color.colorPrimary, R.color.colorAccent);
 
@@ -64,13 +59,13 @@ public class CountryListActivity extends Activity implements Observer, View.OnCl
             countryData.addAll((Collection<? extends CountryData>) result);
             countryRowAdapter.notifyDataSetChanged();
             if (countryData.isEmpty()) {
-                txtEmptyView.setText(getResources().getString(R.string.noCountryDataFound));
+                txtEmptyView.setText((Util.isDeviceOnline(this)) ? getResources().getString(R.string.noCountryDataFound) : getResources().getString(R.string.InternetNotAvailable));
                 txtEmptyView.setVisibility(View.VISIBLE);
             } else {
                 txtEmptyView.setVisibility(View.GONE);
             }
         } else {
-            txtEmptyView.setText(((String) result));
+            txtEmptyView.setText((Util.isDeviceOnline(this)) ? (String) result : getResources().getString(R.string.InternetNotAvailable));
             txtEmptyView.setVisibility(View.VISIBLE);
         }
         if (svRefreshCountries.isRefreshing()) {

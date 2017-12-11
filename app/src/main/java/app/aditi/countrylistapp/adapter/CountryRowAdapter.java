@@ -12,8 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.aditi.countrylistapp.dao.CountryData;
 import app.aditi.countrylistapp.R;
+import app.aditi.countrylistapp.dao.CountryData;
 import app.aditi.countrylistapp.utils.Util;
 
 public class CountryRowAdapter extends RecyclerView.Adapter<CountryRowAdapter.ViewHolder> {
@@ -33,7 +33,7 @@ public class CountryRowAdapter extends RecyclerView.Adapter<CountryRowAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         CountryData data = countryDataList.get(position);
-        Util.loadImage(context, holder.imvCountryIcon, data.getFlag());
+        Util.loadImage(context, holder.imvCountryIcon, data.getFlag(), 0);
         holder.txtCountryName.setText(data.getName());
         holder.txtCountryName.setTag(data);
         holder.txtCountryName.setOnClickListener(((View.OnClickListener) context));
