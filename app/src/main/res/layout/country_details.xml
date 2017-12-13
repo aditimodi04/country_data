@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/rlTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/title"
         android:layout_alignParentTop="true"
         android:background="@color/colorPrimary">
 
@@ -51,12 +51,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/dimen_200dp"
                 android:adjustViewBounds="true"
+                android:background="@drawable/image_border"
                 android:contentDescription="@string/app_name"
+                android:padding="@dimen/margin_padding_5dp"
                 android:scaleType="centerInside"
-                android:src="@mipmap/ic_launcher"
                 app:layout_constraintLeft_toLeftOf="@+id/clCountryDetail"
                 app:layout_constraintRight_toRightOf="@+id/clCountryDetail"
-                app:layout_constraintTop_toTopOf="@+id/clCountryDetail" />
+                app:layout_constraintTop_toTopOf="@+id/clCountryDetail"
+                app:srcCompat="@drawable/ic_flag_black" />
 
             <TextView
                 android:id="@+id/txtCountryName"
@@ -64,9 +66,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
                 android:gravity="center"
-                android:paddingBottom="@dimen/margin_padding_5dp"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:text="@string/country_name"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/txt_20sp"
@@ -78,9 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/txtCountryName">
 
@@ -90,7 +88,7 @@
                     android:layout_weight=".5"
                     android:text="@string/capital"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
 
                 <TextView
@@ -103,14 +101,18 @@
                     android:textSize="@dimen/txt_14sp" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llCapital" />
+
             <LinearLayout
                 android:id="@+id/llRegion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llCapital">
 
@@ -120,7 +122,7 @@
                     android:layout_weight=".5"
                     android:text="@string/region"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
 
                 <TextView
@@ -133,14 +135,18 @@
                     android:textSize="@dimen/txt_14sp" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llRegion" />
+
             <LinearLayout
                 android:id="@+id/llSubRegion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llRegion">
 
@@ -150,7 +156,7 @@
                     android:layout_weight=".5"
                     android:text="@string/sub_region"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
 
                 <TextView
@@ -163,14 +169,18 @@
                     android:textSize="@dimen/txt_14sp" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llSubRegion" />
+
             <LinearLayout
                 android:id="@+id/llPopulation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llSubRegion">
 
@@ -180,7 +190,7 @@
                     android:layout_weight=".5"
                     android:text="@string/population"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
                 <TextView
                     android:id="@+id/txtPopulation"
@@ -192,14 +202,18 @@
                     android:textSize="@dimen/txt_14sp" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llPopulation" />
+
             <LinearLayout
                 android:id="@+id/llArea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llPopulation">
 
@@ -209,7 +223,7 @@
                     android:layout_weight=".5"
                     android:text="@string/area"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
 
                 <TextView
@@ -222,14 +236,18 @@
                     android:textSize="@dimen/txt_14sp" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llArea" />
+
             <LinearLayout
                 android:id="@+id/llTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llArea">
 
@@ -239,7 +257,7 @@
                     android:layout_weight=".5"
                     android:text="@string/timezone"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
 
                 <LinearLayout
@@ -250,14 +268,18 @@
                     android:orientation="vertical" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llTime" />
+
             <LinearLayout
                 android:id="@+id/llBoard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llTime">
 
@@ -268,7 +290,7 @@
                     android:layout_weight=".5"
                     android:text="@string/boarders"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
                 <LinearLayout
                     android:id="@+id/llBoarders"
@@ -279,14 +301,18 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llBoard" />
+
             <LinearLayout
                 android:id="@+id/llCurrency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llBoard">
 
@@ -297,7 +323,7 @@
                     android:layout_weight=".5"
                     android:text="@string/currencies"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
                 <LinearLayout
                     android:id="@+id/llCurrencies"
@@ -307,14 +333,18 @@
                     android:orientation="vertical" />
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"
+                app:layout_constraintTop_toBottomOf="@+id/llCurrency" />
+
             <LinearLayout
                 android:id="@+id/llLang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingEnd="@dimen/margin_padding_5dp"
-                android:paddingStart="@dimen/margin_padding_5dp"
-                android:paddingTop="@dimen/margin_padding_5dp"
+                android:padding="@dimen/margin_padding_5dp"
                 android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/llCurrency">
 
@@ -325,7 +355,7 @@
                     android:layout_weight=".5"
                     android:text="@string/language"
                     android:textColor="@color/light_black"
-                    android:textSize="@dimen/txt_12sp" />
+                    android:textSize="@dimen/txt_14sp" />
 
                 <LinearLayout
                     android:id="@+id/llLanguages"

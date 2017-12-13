@@ -47,8 +47,8 @@ public class CountryDetailsActivity extends Activity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.country_details);
 
-        if (getIntent().hasExtra("countryData")) {
-            countryData = (CountryData) getIntent().getExtras().get(CountryData.COUNTRY_DATA);
+        if (getIntent() != null && getIntent().hasExtra(CountryData.COUNTRY_DATA)) {
+            countryData = (CountryData) getIntent().getSerializableExtra(CountryData.COUNTRY_DATA);
         }
         init();
         setUpUI();

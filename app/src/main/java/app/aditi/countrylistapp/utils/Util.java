@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.StreamEncoder;
 import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
+import com.bumptech.glide.request.target.Target;
 import com.caverock.androidsvg.SVG;
 
 import java.io.InputStream;
@@ -82,6 +83,7 @@ public class Util {
     public static void loadImage(Context context, ImageView imgView, String url, int height) {
         if (url != null && !url.isEmpty()) {
             try {
+//                new HttpImageRequestTask(url, imgView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
                 GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(context)
                         .using(Glide.buildStreamModelLoader(Uri.class, context), InputStream.class)
                         .from(Uri.class)
@@ -93,13 +95,14 @@ public class Util {
                         .placeholder(R.mipmap.ic_launcher)
                         .error(R.mipmap.ic_launcher)
                         .animate(android.R.anim.fade_in)
+                        .override(200, 200)
                         .listener(new SvgSoftwareLayerSetter<Uri>());
-               /* if (height > 0) {
+                if (height > 0) {
                     requestBuilder.override(getDeviceWidth(context), Target.SIZE_ORIGINAL);
-                }*/
+                }
                 Uri uri = Uri.parse(url);
                 requestBuilder
-                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                         .load(uri)
                         .into(imgView);
             } catch (Exception e) {
@@ -107,4 +110,41 @@ public class Util {
             }
         }
     }
+
+  /*  private static class HttpImageRequestTask extends AsyncTask<Void, Void, Drawable> {
+        String imageUrl;
+        ImageView imageView;
+
+        HttpImageRequestTask(String imageUrl, ImageView imageView) {
+            this.imageUrl = imageUrl;
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Drawable doInBackground(Void... params) {
+            try {
+                URL url = new URL(imageUrl);
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                InputStream inputStream = urlConnection.getInputStream();
+                SVG svg = SVGParser.getSVGFromInputStream(inputStream);
+                Drawable drawable = svg.createPictureDrawable();
+                return drawable;
+            } catch (Exception e) {
+                Log.e("MainActivity", e.getMessage(), e);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Drawable drawable) {
+            // Update the view
+            if (drawable != null) {
+
+                // Try using your library and adding this layer type before switching your SVG parsing
+                imageView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+                imageView.setImageDrawable(drawable);
+            }
+        }
+    }*/
 }

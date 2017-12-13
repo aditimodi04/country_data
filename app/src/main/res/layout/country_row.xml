@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llCountryRow"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,9 +11,10 @@
         android:id="@+id/imvCountryIcon"
         android:layout_width="@dimen/country_img_wh"
         android:layout_height="@dimen/country_img_wh"
+        android:background="@drawable/image_border"
         android:contentDescription="@string/app_name"
         android:padding="@dimen/margin_padding_5dp"
-        android:src="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/ic_flag_black" />
 
     <TextView
         android:id="@+id/txtCountryName"
